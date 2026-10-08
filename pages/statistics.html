@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self';" />
+    <title>Campaign Statistics | CyberSafe</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/themes.css" />
+    <link rel="stylesheet" href="../css/print.css" />
+  </head>
+  <body data-page="statistics">
+    <header data-header></header>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="badge">Statistics</span>
+            <h1>Campaign statistics</h1>
+            <p>Public statistics are aggregated and anonymised to protect participant privacy.</p>
+          </div>
+
+          <div class="notice">
+            <strong>Privacy notice:</strong> This site stores data locally in the browser and only displays aggregated anonymous information. Passwords, emails, and private answers are never shown in public statistics.
+          </div>
+
+          <div class="metric-grid">
+            <article class="card">
+              <h3>Total quiz attempts</h3>
+              <p data-total-attempts>0</p>
+            </article>
+            <article class="card">
+              <h3>Average score</h3>
+              <p data-average-score>0%</p>
+            </article>
+            <article class="card">
+              <h3>Website activity</h3>
+              <p data-total-visits>0</p>
+            </article>
+            <article class="card">
+              <h3>Module engagement</h3>
+              <p data-total-module-activity>0</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="two-col">
+            <div class="card">
+              <h3>Awareness distribution</h3>
+              <canvas id="awareness-chart" width="420" height="260"></canvas>
+              <div class="table-like" data-awareness-distribution></div>
+            </div>
+            <div class="card">
+              <h3>Module engagement / activity</h3>
+              <canvas id="engagement-chart" width="420" height="260"></canvas>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 1.25rem;">
+            <h3>Daily activity graph</h3>
+            <canvas id="activity-chart" width="900" height="260"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="card">
+            <h2>Facilitator tools</h2>
+            <div class="button-row">
+              <button class="primary-btn focus-ring" type="button" data-export-json>Export anonymised data (JSON)</button>
+              <button class="secondary-btn focus-ring" type="button" data-export-csv>Export anonymised data (CSV)</button>
+              <button class="secondary-btn focus-ring" type="button" data-import-data>Import and merge data</button>
+              <input type="file" accept="application/json" data-import-file hidden />
+            </div>
+          </div>
+
+          <div class="card" style="margin-top: 1.25rem;">
+            <h2>Pre/post evaluation</h2>
+            <div class="table-like" data-pre-post-summary></div>
+            <div class="table-like" data-weak-topics style="margin-top: 1rem;"></div>
+          </div>
+
+          <div class="card" style="margin-top: 1.25rem;">
+            <h2>Anonymous participant feedback</h2>
+            <form data-feedback-form class="form-grid">
+              <label>
+                <span>Topic</span>
+                <select class="select" name="topic">
+                  <option value="Passwords">Passwords</option>
+                  <option value="2FA">2FA</option>
+                  <option value="Privacy">Privacy</option>
+                  <option value="Phishing">Phishing</option>
+                  <option value="Transactions">Transactions</option>
+                  <option value="General">General</option>
+                </select>
+              </label>
+              <label>
+                <span>Overall feeling</span>
+                <select class="select" name="sentiment">
+                  <option value="Helpful">Helpful</option>
+                  <option value="Neutral">Neutral</option>
+                  <option value="Not enough">Not enough</option>
+                </select>
+              </label>
+              <label>
+                <span>Comment</span>
+                <textarea class="textarea" name="comment" rows="4" placeholder="Optional anonymous feedback"></textarea>
+              </label>
+              <button class="primary-btn focus-ring" type="submit">Save anonymous feedback</button>
+              <div data-feedback-status class="success-message"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer data-footer></footer>
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>

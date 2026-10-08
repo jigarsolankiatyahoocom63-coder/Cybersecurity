@@ -1,0 +1,135 @@
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-alt: #edf3ff;
+  --primary: #123d8c;
+  --primary-dark: #0b294e;
+  --primary-soft: #dfeaff;
+  --accent: #20a39e;
+  --warning: #ffb703;
+  --danger: #d64545;
+  --success: #2e9b58;
+  --text: #1a2430;
+  --muted: #5c6b7c;
+  --border: #dfe7f3;
+  --shadow: 0 12px 32px rgba(18, 61, 140, 0.12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+h1, h2, h3, h4 { line-height: 1.2; margin-top: 0; }
+
+p { margin-top: 0; }
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.key-takeaways {
+  background: var(--surface-alt);
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.2rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+}
+
+.do-dont-grid,
+.card-grid,
+.metric-grid,
+.feature-grid,
+.resource-grid,
+.module-grid,
+.two-col {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.alert {
+  border-left: 4px solid var(--warning);
+  background: #fff7e7;
+  padding: 1rem 1.1rem;
+  border-radius: 0.75rem;
+  color: var(--text);
+}
+
+.focus-ring:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(32, 163, 158, 0.8);
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .section { padding: 3rem 0; }
+}

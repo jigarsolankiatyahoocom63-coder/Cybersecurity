@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self';" />
+    <title>Sign In / Sign Up | CyberSafe</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/themes.css" />
+    <link rel="stylesheet" href="../css/print.css" />
+  </head>
+  <body data-page="auth">
+    <header data-header></header>
+    <main>
+      <section class="section">
+        <div class="container two-col">
+          <div class="auth-card">
+            <h2>Sign In</h2>
+            <form data-signin-form class="form-grid">
+              <label>
+                <span>Email</span>
+                <input class="input" type="email" name="email" required />
+              </label>
+              <label>
+                <span>Password</span>
+                <input class="input" type="password" name="password" required />
+              </label>
+              <button class="primary-btn focus-ring" type="submit">Sign In</button>
+              <div data-form-status class="error-message"></div>
+            </form>
+          </div>
+
+          <div class="auth-card" id="signup">
+            <h2>Sign Up</h2>
+            <p class="notice">This is a demonstration-level, browser-only account system. Passwords are hashed in the browser with Web Crypto before storage; no plain-text passwords are stored.</p>
+            <form data-signup-form class="form-grid">
+              <label>
+                <span>Name</span>
+                <input class="input" type="text" name="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input class="input" type="email" name="email" required />
+              </label>
+              <label>
+                <span>Password</span>
+                <input class="input" type="password" name="password" required />
+              </label>
+              <button class="secondary-btn focus-ring" type="submit">Create account</button>
+              <div data-form-status class="success-message"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer data-footer></footer>
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>

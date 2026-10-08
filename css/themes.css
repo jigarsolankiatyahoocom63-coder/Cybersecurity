@@ -1,0 +1,47 @@
+.theme-panel {
+  background: linear-gradient(135deg, rgba(18,61,140,0.06), rgba(32,163,158,0.08));
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.light-surface {
+  background: white;
+}
+
+.dark-surface {
+  background: var(--primary-dark);
+  color: white;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(32,163,158,0.08), rgba(18,61,140,0.09));
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.1rem;
+}
+
+.warning-box {
+  border-left: 4px solid var(--warning);
+  background: #fff6dc;
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.safe-box {
+  border-left: 4px solid var(--success);
+  background: #eefaf3;
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.risky-box {
+  border-left: 4px solid var(--danger);
+  background: #fff0f0;
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.print-only {
+  display: none;
+}

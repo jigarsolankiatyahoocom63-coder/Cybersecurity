@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberSafe Test Page</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/themes.css" />
+  </head>
+  <body data-page="tests">
+    <header data-header></header>
+    <main>
+      <section class="section">
+        <div class="container">
+          <h1>Logic verification tests</h1>
+          <div id="results" class="card"></div>
+        </div>
+      </section>
+    </main>
+    <footer data-footer></footer>
+    <script type="module">
+      import { calculatePasswordStrength, mapToAwarenessCategory } from '../js/utils/helpers.js';
+      import { dataService } from '../js/services/dataService.js';
+
+      const resultBox = document.querySelector('#results');
+      const checks = [];
+
+      const assert = (label, condition) => {
+        checks.push({ label, passed: !!condition });
+      };
+
+      const strong = calculatePasswordStrength('P@ssw0rd!2025');
+      assert('Strong password score is > 80', strong.score >= 80);
+      assert('Strong password label is Strong', strong.label === 'Strong');
+
+      const weak = calculatePasswordStrength('password');
+      assert('Weak password score is less than 60', weak.score < 60);
+      assert('Weak password includes guidance', weak.suggestions.length > 0);
+
+      assert('Awareness mapping begins as beginner', mapToAwarenessCategory(30) === 'Beginner Awareness');
+      assert('Awareness mapping marks needs improvement', mapToAwarenessCategory(50) === 'Needs Improvement');
+      assert('Awareness mapping marks moderate level', mapToAwarenessCategory(70) === 'Moderately Aware');
+      assert('Awareness mapping marks champion level', mapToAwarenessCategory(90) === 'Highly Aware');
+
+      const before = dataService.getPublicStats();
+      const beforeTotal = before.totalAttempts;
+      const testAttempt = {
+        id: 'test-attempt',
+        userId: 'guest-test',
+        anonymousSessionId: 'session-test-1',
+        score: 6,
+        totalQuestions: 8,
+        percentage: 75,
+        awarenessCategory: 'Moderately Aware',
+        answers: [],
+        mode: 'standard',
+        attemptedAt: new Date().toISOString(),
+      };
+      dataService.addQuizAttempt(testAttempt);
+      const after = dataService.getPublicStats();
+      assert('Total attempts increase for global stats', after.totalAttempts >= beforeTotal + 1);
+      assert('Public stats use all attempts regardless of user', after.totalAttempts >= 1);
+      assert('Awareness buckets exist for public stats', Object.keys(after.awarenessDistribution).includes('Highly Aware'));
+      assert('Awareness buckets include all required levels', ['Highly Aware', 'Moderately Aware', 'Needs Improvement', 'Beginner Awareness'].every((label) => Object.keys(after.awarenessDistribution).includes(label)));
+
+      const rows = checks.map((check) => `
+        <div class="row-line">
+          <span>${check.label}</span>
+          <strong>${check.passed ? 'PASS' : 'FAIL'}</strong>
+        </div>
+      `).join('');
+
+      resultBox.innerHTML = `
+        <div class="table-like">
+          ${rows}
+        </div>
+      `;
+    </script>
+  </body>
+</html>

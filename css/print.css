@@ -1,0 +1,33 @@
+@media print {
+  .site-header,
+  .site-footer,
+  .main-nav,
+  .auth-row,
+  .hero-actions,
+  .button-row,
+  .search-tools,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .card,
+  .module-card,
+  .resource-card,
+  .quiz-card,
+  .tool-card,
+  .form-card,
+  .stats-card {
+    box-shadow: none;
+    border: 1px solid #d0d0d0;
+    break-inside: avoid;
+  }
+
+  .print-only {
+    display: block;
+  }
+}
